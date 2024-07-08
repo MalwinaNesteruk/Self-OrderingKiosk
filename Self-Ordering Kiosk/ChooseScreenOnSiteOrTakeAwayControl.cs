@@ -16,5 +16,17 @@ namespace Self_Ordering_Kiosk
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var form = (Form1)this.Parent.Parent;
+            form.GoToThirdScreen();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var form = (Form1)this.Parent.Parent;
+            form.GoToThirdScreen();
+        }
     }
 }
