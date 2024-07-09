@@ -35,6 +35,7 @@
             napojeToolStripMenuItem = new ToolStripMenuItem();
             koszykToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1 = new MenuStrip();
+            tableForProductsControl1 = new TableForProductsControl();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -108,11 +109,20 @@
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
+            // tableForProductsControl1
+            // 
+            tableForProductsControl1.Dock = DockStyle.Bottom;
+            tableForProductsControl1.Location = new Point(0, 61);
+            tableForProductsControl1.Name = "tableForProductsControl1";
+            tableForProductsControl1.Size = new Size(1084, 550);
+            tableForProductsControl1.TabIndex = 1;
+            // 
             // MainScreenControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
+            Controls.Add(tableForProductsControl1);
             Controls.Add(menuStrip1);
             Name = "MainScreenControl";
             Size = new Size(1084, 611);
@@ -129,5 +139,6 @@
         private ToolStripMenuItem napojeToolStripMenuItem;
         private ToolStripMenuItem koszykToolStripMenuItem;
         private MenuStrip menuStrip1;
+        private TableForProductsControl tableForProductsControl1;
     }
 }

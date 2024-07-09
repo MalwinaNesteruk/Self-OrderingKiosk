@@ -117,32 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="koszykToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAE8AAAAoCAYAAAC/xadkAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAAA2RJREFUaEPtmslK7EAUhlucbVFXooLaTjhiO6AILsSN3QtxQFFEcUDFocWF4Mqd
-        4EPcN/AB7s6n8Inq8hUkpJOThd114iXdi49U/lOpTv2pqlOJZv78/TZ1KqMq8zKZjKjXClWZNz09XdMG
-        Vj1tX19frYE7OztiPM04W/MwsKenR4ylFacJAwNraRo7NQ8w7/n5WYylDefmHR8fm2w2K8Z+Gx7s5OSk
-        GKsE5+YBN0kmXllZseXl5WUzOztrWVxctFpfX5+Zn5/39aWlJatPTU2Zubk5X+facBvgtdPf31/WDmU0
-        YtRBW19ft+cg3W+lqJnnldvb28tiUCqVIhrQWUmX2oCHhwdRh3DMtXGgYt7IyIjZ3Ny05ebm5kj86uoq
-        osHMzIyoS23AxcWFqEMwhnHDw8NlcReomPfx8eE/6d827/z8XGXUgYp54N2wtPd7fHyMaMC6J+kdHR2i
-        Hjf9gc07Ry3jQNW8hoYGe+zt7TVdXV2ms7PTdHd3W62lpcWuZRwZWW1tbb7e1NTkQx10jkG9tbXV6o2N
-        jfZ6Tw+Wicetoy5QM29/f99m2/Hx8Ujs6ekpooHLkYdxIMVcoWYecPNDQ0MRPYk1T9s4UDdPynJxW4x8
-        Pi/qTGlJv7u7E3V+d2NjQ4y5RNW8sbExO2qYppeXlxY6PDo6ara2tszNzY2vk0R4Mzk7O7Mj09OZmpjB
-        0dPg/v7ebokKhYK5vr622svLi91gJzHqQNW89/d3sSN0OKxB3F6MpCDpPICwlpRxoGoeSJ25vb2NaMCo
-        kXQysKQz4oLn/Nbe3l6Zpkki5r29vZVpGgmDd9gkRx2om7e9vW33eUEtbpO8sLAg6nHvtqx7Xjlp40Dd
-        PKBjvCYdHByYk5MTMzAwYL90HB0dWQ1OT0/t9Nzd3TWHh4e+TgLheo6eBrTD1xPWPeJxo1kTdfPIrnRu
-        YmLCJgSgTMb1zj341pbL5SI6n7fCGtAO9eM219r8SsJIC6rmYdza2poYSwNq5q2urqZ61IGaeWk3DlTM
-        w7jgNiKtODePP+zUwqgD5+Zh3P+CdH8uUVvzaoG6eVWgal54Grl6hQq3WywWxXraJGoeSPV+ila7P6Vu
-        XhXUzasCVfMGBwfLOvj19SXW+yn8M0+w3c/PT7GeNqrmpZ26eRXzbf4BYLULl9vKpZoAAAAASUVORK5C
-        YII=
-</value>
-  </data>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>46</value>
-  </metadata>
 </root>

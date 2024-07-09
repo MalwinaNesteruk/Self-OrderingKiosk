@@ -12,6 +12,7 @@ namespace Self_Ordering_Kiosk
 {
     public partial class MainScreenControl : UserControl
     {
+        
         public MainScreenControl()
         {
             InitializeComponent();
@@ -61,5 +62,6 @@ namespace Self_Ordering_Kiosk
             napojeToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
             koszykToolStripMenuItem.BackColor = Color.FromArgb(255, 128, 0);
         }
+
     }
 }
