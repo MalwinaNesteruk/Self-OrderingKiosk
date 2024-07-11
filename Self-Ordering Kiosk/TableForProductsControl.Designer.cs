@@ -48,15 +48,19 @@
             // label1
             // 
             label1.Dock = DockStyle.Top;
+            label1.Font = new Font("Corbel", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.Red;
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
             label1.Size = new Size(1075, 30);
             label1.TabIndex = 1;
-            label1.Text = "label1";
+            label1.Text = "Zapraszamy do zapoznania się z naszą ofertą sezonową.";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel1
             // 
+            tableLayoutPanel1.AutoScroll = true;
+            tableLayoutPanel1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
