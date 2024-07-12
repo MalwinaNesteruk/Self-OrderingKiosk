@@ -11,6 +11,11 @@ namespace Self_Ordering_Kiosk
             InitializeComponent();
         }
 
+        public async Task LoadData()
+        {
+            tableForProductsControl1.SetOneProduct(await InfoSpecialProduct());
+        }
+
         public async Task<List<ProductControl>> InfoProduct(string categoryName)
         {
             using KioskContext db = new KioskContext();
@@ -26,7 +31,22 @@ namespace Self_Ordering_Kiosk
             return products;
         }
 
-        private void ofertySpecjalneToolStripMenuItem_Click(object sender, EventArgs e)
+        public async Task<List<ProductControl>> InfoSpecialProduct()
+        {
+            using KioskContext db = new KioskContext();
+            tableForProductsControl1.Clear();
+            var allProductsInCategory = await db.SpecialOffers.Include(a => a.Product).ToListAsync();
+            List<ProductControl> products = new List<ProductControl>();
+            foreach (var product in allProductsInCategory)
+            {
+                ProductControl productControl = new ProductControl();
+                productControl.SetProduct(product.Product);
+                products.Add(productControl);
+            }
+            return products;
+        }
+
+        private async void ofertySpecjalneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ofertySpecjalneToolStripMenuItem.BackColor = Color.FromArgb(255, 128, 0);
             hamburgeryToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
@@ -34,6 +54,7 @@ namespace Self_Ordering_Kiosk
             napojeToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
             koszykToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
             tableForProductsControl1.SetLabel("Zapraszamy do zapoznania się z naszą ofertą sezonową.");
+            tableForProductsControl1.SetOneProduct(await InfoSpecialProduct());
         }
 
         private async void hamburgeryToolStripMenuItem_Click(object sender, EventArgs e)

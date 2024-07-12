@@ -13,10 +13,12 @@ namespace Self_Ordering_Kiosk
             panel1.Controls.Add(new ChooseScreenOnSiteOrTakeAwayControl());
         }
 
-        public void GoToThirdScreen()
+        public async Task GoToThirdScreen()
         {
             panel1.Controls[0].Dispose();
-            panel1.Controls.Add(new MainScreenControl());
+            var mainScreen = new MainScreenControl();
+            await mainScreen.LoadData();
+            panel1.Controls.Add(mainScreen);
         }
     }
 }

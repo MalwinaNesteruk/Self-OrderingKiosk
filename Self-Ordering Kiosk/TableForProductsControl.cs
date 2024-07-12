@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Self_Ordering_Kiosk
 {
@@ -26,28 +27,17 @@ namespace Self_Ordering_Kiosk
         public void Clear()
         {
             tableLayoutPanel1.Controls.Clear();
+            tableLayoutPanel1.RowCount = 0;
+            tableLayoutPanel1.RowStyles.Clear();
         }
 
         public void SetOneProduct(List<ProductControl> productControl)
         {
-            int i = 0;
-            int j = 0;
-            int counter = 0;
+            tableLayoutPanel1.AutoScrollPosition = new Point(0, tableLayoutPanel1.VerticalScroll.Minimum);
 
             foreach (ProductControl element in productControl) 
             {
-                tableLayoutPanel1.Controls.Add(element, i, j);
-                if (counter == 0)
-                {
-                    j++;
-                    counter++;
-                }
-                else if (counter == 1) 
-                {
-                    i++;
-                    j--;
-                    counter--;
-                }
+                tableLayoutPanel1.Controls.Add(element);
             }
         }
     }

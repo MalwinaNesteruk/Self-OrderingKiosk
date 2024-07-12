@@ -13,6 +13,8 @@ namespace Self_Ordering_Kiosk.db
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<SpecialOffer> SpecialOffers { get; set; }
+
 
         public KioskContext()
         {
