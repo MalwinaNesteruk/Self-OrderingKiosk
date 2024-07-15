@@ -37,6 +37,7 @@
             button1 = new Button();
             button2 = new Button();
             label5 = new Label();
+            label6 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -99,6 +100,7 @@
             button1.Size = new Size(40, 40);
             button1.TabIndex = 5;
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -109,6 +111,8 @@
             button2.Size = new Size(40, 40);
             button2.TabIndex = 6;
             button2.UseVisualStyleBackColor = true;
+            button2.Visible = false;
+            button2.Click += button2_Click;
             // 
             // label5
             // 
@@ -119,11 +123,22 @@
             label5.Size = new Size(25, 27);
             label5.TabIndex = 7;
             label5.Text = "1";
+            label5.Visible = false;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(232, 208);
+            label6.Name = "label6";
+            label6.Size = new Size(38, 15);
+            label6.TabIndex = 8;
+            label6.Text = "label6";
             // 
             // ProductControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -149,5 +164,6 @@
         private Button button1;
         private Button button2;
         private Label label5;
+        private Label label6;
     }
 }

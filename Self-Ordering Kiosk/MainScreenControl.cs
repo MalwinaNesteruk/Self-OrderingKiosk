@@ -6,6 +6,10 @@ namespace Self_Ordering_Kiosk
 {
     public partial class MainScreenControl : UserControl
     {
+        decimal valueOfBasket = 0;
+        int valueOfCounter = 0;
+        List<ProductControl> products = new List<ProductControl>();
+
         public MainScreenControl()
         {
             InitializeComponent();
@@ -13,22 +17,27 @@ namespace Self_Ordering_Kiosk
 
         public async Task LoadData()
         {
-            tableForProductsControl1.SetOneProduct(await InfoSpecialProduct());
-        }
-
-        public async Task<List<ProductControl>> InfoProduct(string categoryName)
-        {
             using KioskContext db = new KioskContext();
-            tableForProductsControl1.Clear();
-            var allProductsInCategory = await db.Products.Include(a => a.Category).Where(x => x.Category.Name.Equals(categoryName)).ToListAsync();
-            List<ProductControl> products = new List<ProductControl>();
-            foreach (var product in allProductsInCategory)
+            var productsFromDb = await db.Products.Include(a => a.Category).ToListAsync();
+            foreach (var product in productsFromDb)
             {
                 ProductControl productControl = new ProductControl();
                 productControl.SetProduct(product);
                 products.Add(productControl);
             }
-            return products;
+
+            tableForProductsControl1.SetOneProduct(await InfoSpecialProduct());
+        }
+
+        public void SetValueOfBasket()
+        {
+            valueOfBasket += 1;
+        }
+
+        public async Task<List<ProductControl>> InfoProduct(string categoryName)
+        {
+            tableForProductsControl1.Clear();
+            return products.Where(p => p.category.Equals(categoryName)).ToList();
         }
 
         public async Task<List<ProductControl>> InfoSpecialProduct()
@@ -36,14 +45,8 @@ namespace Self_Ordering_Kiosk
             using KioskContext db = new KioskContext();
             tableForProductsControl1.Clear();
             var allProductsInCategory = await db.SpecialOffers.Include(a => a.Product).ToListAsync();
-            List<ProductControl> products = new List<ProductControl>();
-            foreach (var product in allProductsInCategory)
-            {
-                ProductControl productControl = new ProductControl();
-                productControl.SetProduct(product.Product);
-                products.Add(productControl);
-            }
-            return products;
+            var allSpecialProductsId = allProductsInCategory.Select(p => p.Product.Id).ToList();
+            return products.Where(p => allSpecialProductsId.Contains(p.productId)).ToList();
         }
 
         private async void ofertySpecjalneToolStripMenuItem_Click(object sender, EventArgs e)
@@ -99,6 +102,13 @@ namespace Self_Ordering_Kiosk
             napojeToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
             koszykToolStripMenuItem.BackColor = Color.FromArgb(255, 128, 0);
             tableForProductsControl1.SetLabel("");
+        }
+
+        public void UpdateCartEvent()
+        {
+            valueOfBasket = products.Sum(p => p.productsPrice);
+            valueOfCounter = products.Sum(p => p.counter);
+            koszykToolStripMenuItem.Text = "(" + valueOfCounter.ToString() + ")      " + valueOfBasket.ToString();
         }
     }
 }

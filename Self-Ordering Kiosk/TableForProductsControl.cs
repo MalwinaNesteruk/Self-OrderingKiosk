@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,6 +35,7 @@ namespace Self_Ordering_Kiosk
         public void SetOneProduct(List<ProductControl> productControl)
         {
             tableLayoutPanel1.AutoScrollPosition = new Point(0, tableLayoutPanel1.VerticalScroll.Minimum);
+            //products = productControl;
 
             foreach (ProductControl element in productControl) 
             {
