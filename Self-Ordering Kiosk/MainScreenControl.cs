@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Self_Ordering_Kiosk.db;
+using Self_Ordering_Kiosk.db.Model;
+using Self_Ordering_Kiosk.Properties;
 using System.Data;
 
 namespace Self_Ordering_Kiosk
@@ -40,6 +42,15 @@ namespace Self_Ordering_Kiosk
             return products.Where(p => p.category.Equals(categoryName)).ToList();
         }
 
+        public List<OneProposalControl> ProposalProduct()
+        {
+            var idList = products.Select(x => x.productId).ToList();
+            Random rnd = new Random();
+            var drawId = idList.OrderBy(x => rnd.Next()).Take(8).ToList();
+            var proposalProductList = products.Where(p => drawId.Contains(p.productId)).Select(x => new OneProposalControl(x.productName, x.productPrice)).ToList();
+            return proposalProductList;
+        }
+
         public async Task<List<ProductControl>> InfoSpecialProduct()
         {
             using KioskContext db = new KioskContext();
@@ -51,6 +62,8 @@ namespace Self_Ordering_Kiosk
 
         private async void ofertySpecjalneToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            proposalControl1.Visible = false;
+            tableForProductsControl1.Visible = true;
             ofertySpecjalneToolStripMenuItem.BackColor = Color.FromArgb(255, 128, 0);
             hamburgeryToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
             dodatkiToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
@@ -62,6 +75,8 @@ namespace Self_Ordering_Kiosk
 
         private async void hamburgeryToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            proposalControl1.Visible = false;
+            tableForProductsControl1.Visible = true;
             ofertySpecjalneToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
             hamburgeryToolStripMenuItem.BackColor = Color.FromArgb(255, 128, 0);
             dodatkiToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
@@ -73,6 +88,8 @@ namespace Self_Ordering_Kiosk
 
         private async void dodatkiToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            proposalControl1.Visible = false;
+            tableForProductsControl1.Visible = true;
             ofertySpecjalneToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
             hamburgeryToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
             dodatkiToolStripMenuItem.BackColor = Color.FromArgb(255, 128, 0);
@@ -84,6 +101,8 @@ namespace Self_Ordering_Kiosk
 
         private async void napojeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            proposalControl1.Visible = false;
+            tableForProductsControl1.Visible = true;
             ofertySpecjalneToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
             hamburgeryToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
             dodatkiToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
@@ -96,12 +115,14 @@ namespace Self_Ordering_Kiosk
 
         private void koszykToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tableForProductsControl1.Visible = false;
+            proposalControl1.Visible = true;
             ofertySpecjalneToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
             hamburgeryToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
             dodatkiToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
             napojeToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
             koszykToolStripMenuItem.BackColor = Color.FromArgb(255, 128, 0);
-            tableForProductsControl1.SetLabel("");
+            proposalControl1.SetOneProduct(ProposalProduct());
         }
 
         public void UpdateCartEvent()

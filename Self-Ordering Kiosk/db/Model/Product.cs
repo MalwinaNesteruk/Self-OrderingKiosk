@@ -28,5 +28,6 @@ namespace Self_Ordering_Kiosk.db.Model
         [ForeignKey("type")]
         public Category Category { get; set; }
 
+
     }
 }

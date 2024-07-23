@@ -20,5 +20,11 @@ namespace Self_Ordering_Kiosk
             await mainScreen.LoadData();
             panel1.Controls.Add(mainScreen);
         }
+
+        public async Task GoToFirstScreen()
+        {
+            panel1.Controls[0].Dispose();
+            panel1.Controls.Add(new WelcomeControl());
+        }
     }
 }

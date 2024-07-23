@@ -18,6 +18,8 @@ namespace Self_Ordering_Kiosk
         public decimal productsPrice = 0;
         public int productId;
         public string category;
+        public string productName;
+        public decimal productPrice;
 
         public ProductControl()
         {
@@ -32,6 +34,8 @@ namespace Self_Ordering_Kiosk
             pictureBox1.ImageLocation = product.Picture;
             productId = product.Id;
             category = product.Category.Name;
+            productName = product.Name;
+            productPrice = product.Price;
         }
 
         public decimal ReturnPrice()
@@ -48,7 +52,6 @@ namespace Self_Ordering_Kiosk
         {
 
             productsPrice += Convert.ToDecimal(label4.Text);
-            label6.Text = productsPrice.ToString();
             counter++;
             if (counter == 1)
             {
@@ -79,7 +82,6 @@ namespace Self_Ordering_Kiosk
         {
 
             productsPrice -= Convert.ToDecimal(label4.Text);
-            label6.Text = productsPrice.ToString();
             counter--;
             if (counter == 0)
             {

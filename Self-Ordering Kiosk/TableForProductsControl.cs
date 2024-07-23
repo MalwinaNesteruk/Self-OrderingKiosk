@@ -37,10 +37,16 @@ namespace Self_Ordering_Kiosk
             tableLayoutPanel1.AutoScrollPosition = new Point(0, tableLayoutPanel1.VerticalScroll.Minimum);
             //products = productControl;
 
-            foreach (ProductControl element in productControl) 
+            foreach (ProductControl element in productControl)
             {
                 tableLayoutPanel1.Controls.Add(element);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var form = (Form1)this.Parent.Parent.Parent;
+            form.GoToFirstScreen();
         }
     }
 }

@@ -36,6 +36,7 @@
             koszykToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1 = new MenuStrip();
             tableForProductsControl1 = new TableForProductsControl();
+            proposalControl1 = new ProposalControl();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -93,7 +94,7 @@
             koszykToolStripMenuItem.Name = "koszykToolStripMenuItem";
             koszykToolStripMenuItem.Padding = new Padding(0);
             koszykToolStripMenuItem.Size = new Size(260, 46);
-            koszykToolStripMenuItem.Text = "Koszyk        ";
+            koszykToolStripMenuItem.Text = "(0)       0,00";
             koszykToolStripMenuItem.TextAlign = ContentAlignment.MiddleRight;
             koszykToolStripMenuItem.TextImageRelation = TextImageRelation.Overlay;
             koszykToolStripMenuItem.Click += koszykToolStripMenuItem_Click;
@@ -105,27 +106,35 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { ofertySpecjalneToolStripMenuItem, hamburgeryToolStripMenuItem, dodatkiToolStripMenuItem, napojeToolStripMenuItem, koszykToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1084, 50);
+            menuStrip1.Size = new Size(1087, 50);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
             // tableForProductsControl1
             // 
-            tableForProductsControl1.Dock = DockStyle.Bottom;
             tableForProductsControl1.Location = new Point(0, 61);
             tableForProductsControl1.Name = "tableForProductsControl1";
             tableForProductsControl1.Size = new Size(1084, 550);
             tableForProductsControl1.TabIndex = 1;
+            // 
+            // proposalControl1
+            // 
+            proposalControl1.Location = new Point(0, 61);
+            proposalControl1.Name = "proposalControl1";
+            proposalControl1.Size = new Size(1075, 550);
+            proposalControl1.TabIndex = 2;
+            proposalControl1.Visible = false;
             // 
             // MainScreenControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
+            Controls.Add(proposalControl1);
             Controls.Add(tableForProductsControl1);
             Controls.Add(menuStrip1);
             Name = "MainScreenControl";
-            Size = new Size(1084, 611);
+            Size = new Size(1087, 614);
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -140,5 +149,6 @@
         private ToolStripMenuItem koszykToolStripMenuItem;
         private MenuStrip menuStrip1;
         private TableForProductsControl tableForProductsControl1;
+        private ProposalControl proposalControl1;
     }
 }
