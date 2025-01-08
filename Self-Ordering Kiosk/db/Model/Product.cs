@@ -28,6 +28,15 @@ namespace Self_Ordering_Kiosk.db.Model
         [ForeignKey("type")]
         public Category Category { get; set; }
 
+        public override bool Equals(object? obj)
+        {
+            Product product = obj as Product;
+            return product.Id == this.Id;
+        }
 
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
     }
 }

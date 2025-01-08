@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Self_Ordering_Kiosk
+{
+    public partial class SummaryControl : UserControl
+    {
+        public SummaryControl()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var form = (Form1)this.Parent.Parent;
+            form.GoToPaymentProcessingScreen();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var form = (Form1)this.Parent.Parent;
+            form.GoToThirdScreen();
+        }
+    }
+}

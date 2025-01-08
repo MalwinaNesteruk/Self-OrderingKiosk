@@ -20,14 +20,12 @@ namespace Self_Ordering_Kiosk
         public string category;
         public string productName;
         public decimal productPrice;
+        Product product;
 
-        public ProductControl()
+        public ProductControl(Product product)
         {
             InitializeComponent();
-        }
-
-        public void SetProduct(Product product)
-        {
+            this.product = product;
             label1.Text = product.Name;
             label2.Text = product.Description;
             label4.Text = product.Price.ToString();
@@ -36,6 +34,26 @@ namespace Self_Ordering_Kiosk
             category = product.Category.Name;
             productName = product.Name;
             productPrice = product.Price;
+        }
+        
+        public ProductControl(Product product, int quantity)
+        {
+            InitializeComponent();
+            this.product = product;
+            label1.Text = product.Name;
+            label2.Text = product.Description;
+            label4.Text = product.Price.ToString();
+            pictureBox1.ImageLocation = product.Picture;
+            productId = product.Id;
+            category = product.Category.Name;
+            productName = product.Name;
+            productPrice = product.Price;
+
+            counter = quantity;
+            textToLabel = quantity;
+            label5.Text = textToLabel.ToString();
+            label5.Visible = true;
+            button2.Visible = true;
         }
 
         public decimal ReturnPrice()
@@ -50,6 +68,7 @@ namespace Self_Ordering_Kiosk
 
         private void button1_Click(object sender, EventArgs e)
         {
+
 
             productsPrice += Convert.ToDecimal(label4.Text);
             counter++;
@@ -69,6 +88,16 @@ namespace Self_Ordering_Kiosk
                 label5.Text = textToLabel.ToString();
                 button1.Enabled = false;
             }
+
+            if (!Cart.contentsOfCart.ContainsKey(product))
+            {
+                Cart.contentsOfCart.Add(product, counter);
+            }
+            else
+            {
+                Cart.contentsOfCart[product] = counter;
+            }
+
             InvokeCart();
         }
 
@@ -99,6 +128,16 @@ namespace Self_Ordering_Kiosk
                 textToLabel--;
                 label5.Text = textToLabel.ToString();
             }
+
+            if (counter == 0)
+            {
+                Cart.contentsOfCart.Remove(product);
+            }
+            else
+            {
+                Cart.contentsOfCart[product] = counter;
+            }
+
             InvokeCart();
         }
     }

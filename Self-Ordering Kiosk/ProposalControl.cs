@@ -24,5 +24,11 @@ namespace Self_Ordering_Kiosk
                 tableLayoutPanel1.Controls.Add(element);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var form = (Form1)this.Parent.Parent.Parent;
+            form.GoToFourthScreen();
+        }
     }
 }

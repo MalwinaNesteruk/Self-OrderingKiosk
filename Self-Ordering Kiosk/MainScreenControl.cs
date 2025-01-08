@@ -23,9 +23,21 @@ namespace Self_Ordering_Kiosk
             var productsFromDb = await db.Products.Include(a => a.Category).ToListAsync();
             foreach (var product in productsFromDb)
             {
-                ProductControl productControl = new ProductControl();
-                productControl.SetProduct(product);
-                products.Add(productControl);
+                if(!Cart.contentsOfCart.ContainsKey(product))
+                {
+                    ProductControl productControl = new ProductControl(product);
+                    products.Add(productControl);
+                }
+                else
+                {
+                    ProductControl productControl = new ProductControl(product, Cart.contentsOfCart[product]);
+                    products.Add(productControl);
+                    valueOfCounter += Cart.contentsOfCart[product];
+                    valueOfBasket += Cart.contentsOfCart[product] * product.Price;
+                    koszykToolStripMenuItem.Text = "(" + valueOfCounter.ToString() + ")      " + valueOfBasket.ToString();
+                }
+
+                
             }
 
             tableForProductsControl1.SetOneProduct(await InfoSpecialProduct());
@@ -127,8 +139,8 @@ namespace Self_Ordering_Kiosk
 
         public void UpdateCartEvent()
         {
-            valueOfBasket = products.Sum(p => p.productsPrice);
-            valueOfCounter = products.Sum(p => p.counter);
+            valueOfBasket = Cart.contentsOfCart.Select(a => a.Key.Price * a.Value).Sum();
+            valueOfCounter = Cart.contentsOfCart.Values.Sum();
             koszykToolStripMenuItem.Text = "(" + valueOfCounter.ToString() + ")      " + valueOfBasket.ToString();
         }
     }

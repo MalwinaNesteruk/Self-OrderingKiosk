@@ -2,6 +2,7 @@ namespace Self_Ordering_Kiosk
 {
     public partial class Form1 : Form
     {
+
         public Form1()
         {
             InitializeComponent();
@@ -13,7 +14,7 @@ namespace Self_Ordering_Kiosk
             panel1.Controls.Add(new ChooseScreenOnSiteOrTakeAwayControl());
         }
 
-        public async Task GoToThirdScreen()
+        public async Task GoToThirdScreen() 
         {
             panel1.Controls[0].Dispose();
             var mainScreen = new MainScreenControl();
@@ -25,6 +26,24 @@ namespace Self_Ordering_Kiosk
         {
             panel1.Controls[0].Dispose();
             panel1.Controls.Add(new WelcomeControl());
+        }
+
+        public void GoToFourthScreen()
+        {
+            panel1.Controls[0].Dispose();
+            panel1.Controls.Add(new SummaryControl());
+        }
+
+        public void GoToPaymentProcessingScreen()
+        {
+            panel1.Controls[0].Dispose();
+            panel1.Controls.Add(new PaymentProcessingControl());
+        }
+
+        public void GoToOrderPaidScreen()
+        {
+            panel1.Controls[0].Dispose();
+            panel1.Controls.Add(new OrderPaidControl());
         }
     }
 }
