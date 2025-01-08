@@ -12,9 +12,21 @@ namespace Self_Ordering_Kiosk
 {
     public partial class OneSummaryControl : UserControl
     {
+        public decimal Price { get; set; }
+
         public OneSummaryControl()
         {
             InitializeComponent();
+
+        }
+
+        public OneSummaryControl(string name, decimal price, int quantity)
+        {
+            InitializeComponent();
+            this.Price = price;
+            label1.Text = name;
+            label2.Text = quantity.ToString();
+            label3.Text = price.ToString();
         }
     }
 }

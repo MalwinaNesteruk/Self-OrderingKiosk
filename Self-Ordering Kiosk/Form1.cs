@@ -24,6 +24,7 @@ namespace Self_Ordering_Kiosk
 
         public async Task GoToFirstScreen()
         {
+            Cart.contentsOfCart.Clear();
             panel1.Controls[0].Dispose();
             panel1.Controls.Add(new WelcomeControl());
         }

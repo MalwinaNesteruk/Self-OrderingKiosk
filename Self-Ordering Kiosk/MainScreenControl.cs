@@ -135,6 +135,8 @@ namespace Self_Ordering_Kiosk
             napojeToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
             koszykToolStripMenuItem.BackColor = Color.FromArgb(255, 128, 0);
             proposalControl1.SetOneProduct(ProposalProduct());
+            
+
         }
 
         public void UpdateCartEvent()
