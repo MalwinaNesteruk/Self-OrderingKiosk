@@ -18,7 +18,7 @@ namespace Self_Ordering_Kiosk
         public SummaryControl()
         {
             InitializeComponent();
-            var summaryCartList = Cart.contentsOfCart.Select(x => new OneSummaryControl(x.Key.Name, x.Key.Price * x.Value, x.Value)).ToList();
+            var summaryCartList = Cart.contentsOfCart.Select(x => new OneSummaryControl(x.Key.Name, x.Key.Price * x.Value, x.Value, x.Key)).ToList();
             foreach (OneSummaryControl element in summaryCartList)
             {
                 tableLayoutPanel1.Controls.Add(element);
@@ -37,6 +37,12 @@ namespace Self_Ordering_Kiosk
         {
             var form = (Form1)this.Parent.Parent;
             form.GoToThirdScreen();
+        }
+
+        public void UpdateOrderValueEvent()
+        {
+            totalValue = Cart.contentsOfCart.Select(a => a.Key.Price * a.Value).Sum();
+            label3.Text = totalValue.ToString();
         }
     }
 }

@@ -68,8 +68,6 @@ namespace Self_Ordering_Kiosk
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-
             productsPrice += Convert.ToDecimal(label4.Text);
             counter++;
             if (counter == 1)
