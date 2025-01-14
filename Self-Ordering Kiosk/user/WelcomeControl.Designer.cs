@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WelcomeControl));
             label1 = new Label();
             button1 = new Button();
+            button2 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -58,6 +59,19 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // button2
+            // 
+            button2.BackColor = Color.Black;
+            button2.Font = new Font("Arial", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.ForeColor = SystemColors.ButtonHighlight;
+            button2.Location = new Point(799, 489);
+            button2.Name = "button2";
+            button2.Size = new Size(265, 105);
+            button2.TabIndex = 2;
+            button2.Text = "Zaloguj";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
             // WelcomeControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -65,6 +79,7 @@
             BackColor = SystemColors.InactiveCaption;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
+            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label1);
             DoubleBuffered = true;
@@ -79,5 +94,6 @@
 
         private Label label1;
         private Button button1;
+        private Button button2;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Self_Ordering_Kiosk.db.Model;
+using Self_Ordering_Kiosk.user;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

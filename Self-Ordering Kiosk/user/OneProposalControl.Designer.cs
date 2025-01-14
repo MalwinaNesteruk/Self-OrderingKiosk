@@ -28,24 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            button1 = new Button();
             SuspendLayout();
             // 
-            // label1
+            // button1
             // 
-            label1.Font = new Font("Arial", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(0, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(266, 133);
-            label1.TabIndex = 0;
-            label1.Text = "Lemoniada winogronowa\r\n18.99";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
+            button1.BackColor = Color.FromArgb(255, 255, 128);
+            button1.Dock = DockStyle.Fill;
+            button1.Font = new Font("Arial", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Location = new Point(0, 0);
+            button1.Name = "button1";
+            button1.Size = new Size(266, 133);
+            button1.TabIndex = 0;
+            button1.Text = "Lemoniada winogronowa\r\n18,99";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // OneProposalControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(label1);
+            Controls.Add(button1);
             Name = "OneProposalControl";
             Size = new Size(266, 133);
             ResumeLayout(false);
@@ -53,6 +56,6 @@
 
         #endregion
 
-        private Label label1;
+        private Button button1;
     }
 }

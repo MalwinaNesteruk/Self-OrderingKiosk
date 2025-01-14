@@ -1,4 +1,5 @@
 ﻿using Self_Ordering_Kiosk.db.Model;
+using Self_Ordering_Kiosk.user;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +21,7 @@ namespace Self_Ordering_Kiosk
         public string category;
         public string productName;
         public decimal productPrice;
-        Product product;
+        public Product product;
 
         public ProductControl(Product product)
         {

@@ -16,14 +16,14 @@ namespace Self_Ordering_Kiosk.db.Model
         [Column("price")]
         public decimal Price { get; set; }
 
-        //[Column("type")]
-        //public int Type { get; set; }
-
         [Column("picture")]
         public string Picture { get; set; }
 
         [Column("description")]
         public string Description { get; set; }
+
+/*        [Column("type")]
+        public int Type { get; set; }*/
 
         [ForeignKey("type")]
         public Category Category { get; set; }
@@ -38,5 +38,7 @@ namespace Self_Ordering_Kiosk.db.Model
         {
             return Id.GetHashCode();
         }
+
+        public ICollection<ProductsOrders> ProductsOrders { get; set; }
     }
 }

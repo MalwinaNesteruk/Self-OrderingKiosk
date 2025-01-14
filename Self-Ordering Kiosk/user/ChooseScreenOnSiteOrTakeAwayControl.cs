@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Self_Ordering_Kiosk.user;
 
 namespace Self_Ordering_Kiosk
 {
@@ -25,6 +26,7 @@ namespace Self_Ordering_Kiosk
 
         private async void button2_Click(object sender, EventArgs e)
         {
+            Cart.isTakeaway = true;
             var form = (Form1)this.Parent.Parent;
             await form.GoToThirdScreen();
         }

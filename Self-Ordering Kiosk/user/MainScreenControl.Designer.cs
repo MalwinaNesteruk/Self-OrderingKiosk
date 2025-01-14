@@ -87,6 +87,7 @@
             // 
             koszykToolStripMenuItem.AutoSize = false;
             koszykToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
+            koszykToolStripMenuItem.Enabled = false;
             koszykToolStripMenuItem.Font = new Font("Arial", 18F, FontStyle.Regular, GraphicsUnit.Point);
             koszykToolStripMenuItem.Image = (Image)resources.GetObject("koszykToolStripMenuItem.Image");
             koszykToolStripMenuItem.ImageAlign = ContentAlignment.MiddleLeft;

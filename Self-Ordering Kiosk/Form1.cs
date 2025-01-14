@@ -1,3 +1,6 @@
+using Self_Ordering_Kiosk.employee;
+using Self_Ordering_Kiosk.user;
+
 namespace Self_Ordering_Kiosk
 {
     public partial class Form1 : Form
@@ -8,6 +11,9 @@ namespace Self_Ordering_Kiosk
             InitializeComponent();
         }
 
+        /// user
+        
+        
         public void GoToSecondScreen()
         {
             panel1.Controls[0].Dispose();
@@ -45,6 +51,23 @@ namespace Self_Ordering_Kiosk
         {
             panel1.Controls[0].Dispose();
             panel1.Controls.Add(new OrderPaidControl());
+        }
+
+        ///employee
+
+        public void GoToLoggingScreen()
+        {
+            panel1.Controls[0].Dispose();
+            panel1.Controls.Add(new Logging());
+        }
+
+        //public async Task GoToThirdScreen()
+        public void GoToMainScreenEmployee()
+        {
+            panel1.Controls[0].Dispose();
+            //var mainScreen = new MainScreenControl();
+            //await mainScreen.LoadData();
+            panel1.Controls.Add(new MainScreenEmployee());
         }
     }
 }

@@ -2,7 +2,9 @@
 using Self_Ordering_Kiosk.db;
 using Self_Ordering_Kiosk.db.Model;
 using Self_Ordering_Kiosk.Properties;
+using Self_Ordering_Kiosk.user;
 using System.Data;
+using System.Linq;
 
 namespace Self_Ordering_Kiosk
 {
@@ -39,7 +41,7 @@ namespace Self_Ordering_Kiosk
 
                 
             }
-
+            AbilityToClickOnCart();
             tableForProductsControl1.SetOneProduct(await InfoSpecialProduct());
         }
 
@@ -57,9 +59,29 @@ namespace Self_Ordering_Kiosk
         public List<OneProposalControl> ProposalProduct()
         {
             var idList = products.Select(x => x.productId).ToList();
-            Random rnd = new Random();
-            var drawId = idList.OrderBy(x => rnd.Next()).Take(8).ToList();
-            var proposalProductList = products.Where(p => drawId.Contains(p.productId)).Select(x => new OneProposalControl(x.productName, x.productPrice)).ToList();
+            List<int> idFromDictionary = new List<int>();
+            foreach (var product in Cart.contentsOfCart.Keys)
+            {
+                idFromDictionary.Add(product.Id);
+            }
+
+            for (int i = 0; i < idFromDictionary.Count; i++)
+            {
+                if (idList.Contains(idFromDictionary[i]))
+                {
+                    idList.Remove(idFromDictionary[i]);
+                }
+            }
+
+            Random rnd = new Random(); 
+            if (idList.Count == 0)
+            {
+                int rand = products.Select(x => x.productId).OrderBy(x => rnd.Next()).FirstOrDefault();
+                return products.Where(p => p.productId == rand).Select(x => new OneProposalControl(x.productName, x.productPrice, x.product)).ToList();
+            }
+
+            var drawId = idList.OrderBy(x => rnd.Next()).Take(idList.Count > 8 ? 8 : idList.Count).ToList();
+            var proposalProductList = products.Where(p => drawId.Contains(p.productId)).Select(x => new OneProposalControl(x.productName, x.productPrice, x.product)).ToList();
             return proposalProductList;
         }
 
@@ -141,9 +163,22 @@ namespace Self_Ordering_Kiosk
 
         public void UpdateCartEvent()
         {
+            AbilityToClickOnCart();
             valueOfBasket = Cart.contentsOfCart.Select(a => a.Key.Price * a.Value).Sum();
             valueOfCounter = Cart.contentsOfCart.Values.Sum();
             koszykToolStripMenuItem.Text = "(" + valueOfCounter.ToString() + ")      " + valueOfBasket.ToString();
+        }
+
+        public void AbilityToClickOnCart()
+        {
+            if (Cart.contentsOfCart.Count > 0)
+            {
+                koszykToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                koszykToolStripMenuItem.Enabled = false;
+            }
         }
     }
 }
