@@ -28,39 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ofertySpecjalneToolStripMenuItem = new ToolStripMenuItem();
             hamburgeryToolStripMenuItem = new ToolStripMenuItem();
             dodatkiToolStripMenuItem = new ToolStripMenuItem();
             napojeToolStripMenuItem = new ToolStripMenuItem();
-            menuStrip1 = new MenuStrip();
-            koszykToolStripMenuItem = new ToolStripMenuItem();
+            panelToolStripMenuItem = new ToolStripMenuItem();
             zmieńHasłoToolStripMenuItem = new ToolStripMenuItem();
             dodajOfertęToolStripMenuItem = new ToolStripMenuItem();
             usuńOfertęToolStripMenuItem = new ToolStripMenuItem();
             dodajPracownikaToolStripMenuItem = new ToolStripMenuItem();
             usuńPracownikaToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1 = new MenuStrip();
+            wylogowanieToolStripMenuItem = new ToolStripMenuItem();
+            tableForProductsEmployee1 = new TableForProductsEmployee();
             menuStrip1.SuspendLayout();
             SuspendLayout();
-            // 
-            // ofertySpecjalneToolStripMenuItem
-            // 
-            ofertySpecjalneToolStripMenuItem.AutoSize = false;
-            ofertySpecjalneToolStripMenuItem.BackColor = Color.FromArgb(255, 128, 0);
-            ofertySpecjalneToolStripMenuItem.Font = new Font("Arial", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            ofertySpecjalneToolStripMenuItem.Margin = new Padding(0, 0, 3, 0);
-            ofertySpecjalneToolStripMenuItem.Name = "ofertySpecjalneToolStripMenuItem";
-            ofertySpecjalneToolStripMenuItem.Size = new Size(214, 46);
-            ofertySpecjalneToolStripMenuItem.Text = "Hamburgery";
             // 
             // hamburgeryToolStripMenuItem
             // 
             hamburgeryToolStripMenuItem.AutoSize = false;
-            hamburgeryToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
+            hamburgeryToolStripMenuItem.BackColor = Color.FromArgb(255, 128, 0);
             hamburgeryToolStripMenuItem.Font = new Font("Arial", 18F, FontStyle.Regular, GraphicsUnit.Point);
             hamburgeryToolStripMenuItem.Margin = new Padding(0, 0, 3, 0);
             hamburgeryToolStripMenuItem.Name = "hamburgeryToolStripMenuItem";
             hamburgeryToolStripMenuItem.Size = new Size(214, 46);
-            hamburgeryToolStripMenuItem.Text = "Dodatki";
+            hamburgeryToolStripMenuItem.Text = "Hamburgery";
+            hamburgeryToolStripMenuItem.Click += hamburgeryToolStripMenuItem_Click_1;
             // 
             // dodatkiToolStripMenuItem
             // 
@@ -70,44 +62,30 @@
             dodatkiToolStripMenuItem.Margin = new Padding(0, 0, 3, 0);
             dodatkiToolStripMenuItem.Name = "dodatkiToolStripMenuItem";
             dodatkiToolStripMenuItem.Size = new Size(214, 46);
-            dodatkiToolStripMenuItem.Text = "Napoje";
+            dodatkiToolStripMenuItem.Text = "Dodatki";
+            dodatkiToolStripMenuItem.Click += dodatkiToolStripMenuItem_Click_1;
             // 
             // napojeToolStripMenuItem
             // 
             napojeToolStripMenuItem.AutoSize = false;
             napojeToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
-            napojeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { zmieńHasłoToolStripMenuItem, dodajOfertęToolStripMenuItem, usuńOfertęToolStripMenuItem, dodajPracownikaToolStripMenuItem, usuńPracownikaToolStripMenuItem });
             napojeToolStripMenuItem.Font = new Font("Arial", 18F, FontStyle.Regular, GraphicsUnit.Point);
             napojeToolStripMenuItem.Margin = new Padding(0, 0, 3, 0);
             napojeToolStripMenuItem.Name = "napojeToolStripMenuItem";
             napojeToolStripMenuItem.Size = new Size(214, 46);
-            napojeToolStripMenuItem.Text = "Panel";
+            napojeToolStripMenuItem.Text = "Napoje";
+            napojeToolStripMenuItem.Click += napojeToolStripMenuItem_Click_1;
             // 
-            // menuStrip1
+            // panelToolStripMenuItem
             // 
-            menuStrip1.AutoSize = false;
-            menuStrip1.GripMargin = new Padding(2);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { ofertySpecjalneToolStripMenuItem, hamburgeryToolStripMenuItem, dodatkiToolStripMenuItem, napojeToolStripMenuItem, koszykToolStripMenuItem });
-            menuStrip1.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1084, 50);
-            menuStrip1.TabIndex = 1;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // koszykToolStripMenuItem
-            // 
-            koszykToolStripMenuItem.Alignment = ToolStripItemAlignment.Right;
-            koszykToolStripMenuItem.AutoSize = false;
-            koszykToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
-            koszykToolStripMenuItem.Font = new Font("Arial", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            koszykToolStripMenuItem.ImageAlign = ContentAlignment.MiddleLeft;
-            koszykToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
-            koszykToolStripMenuItem.Name = "koszykToolStripMenuItem";
-            koszykToolStripMenuItem.Padding = new Padding(0);
-            koszykToolStripMenuItem.Size = new Size(210, 46);
-            koszykToolStripMenuItem.Text = "Wyloguj";
-            koszykToolStripMenuItem.TextImageRelation = TextImageRelation.Overlay;
+            panelToolStripMenuItem.AutoSize = false;
+            panelToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
+            panelToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { zmieńHasłoToolStripMenuItem, dodajOfertęToolStripMenuItem, usuńOfertęToolStripMenuItem, dodajPracownikaToolStripMenuItem, usuńPracownikaToolStripMenuItem });
+            panelToolStripMenuItem.Font = new Font("Arial", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            panelToolStripMenuItem.Margin = new Padding(0, 0, 3, 0);
+            panelToolStripMenuItem.Name = "panelToolStripMenuItem";
+            panelToolStripMenuItem.Size = new Size(214, 46);
+            panelToolStripMenuItem.Text = "Panel";
             // 
             // zmieńHasłoToolStripMenuItem
             // 
@@ -144,10 +122,45 @@
             usuńPracownikaToolStripMenuItem.Size = new Size(206, 22);
             usuńPracownikaToolStripMenuItem.Text = "Usuń pracownika";
             // 
+            // menuStrip1
+            // 
+            menuStrip1.AutoSize = false;
+            menuStrip1.GripMargin = new Padding(2);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { hamburgeryToolStripMenuItem, dodatkiToolStripMenuItem, napojeToolStripMenuItem, panelToolStripMenuItem, wylogowanieToolStripMenuItem });
+            menuStrip1.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1084, 50);
+            menuStrip1.TabIndex = 1;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // wylogowanieToolStripMenuItem
+            // 
+            wylogowanieToolStripMenuItem.Alignment = ToolStripItemAlignment.Right;
+            wylogowanieToolStripMenuItem.AutoSize = false;
+            wylogowanieToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
+            wylogowanieToolStripMenuItem.Font = new Font("Arial", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            wylogowanieToolStripMenuItem.ImageAlign = ContentAlignment.MiddleLeft;
+            wylogowanieToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
+            wylogowanieToolStripMenuItem.Name = "wylogowanieToolStripMenuItem";
+            wylogowanieToolStripMenuItem.Padding = new Padding(0);
+            wylogowanieToolStripMenuItem.Size = new Size(210, 46);
+            wylogowanieToolStripMenuItem.Text = "Wyloguj";
+            wylogowanieToolStripMenuItem.TextImageRelation = TextImageRelation.Overlay;
+            wylogowanieToolStripMenuItem.Click += wylogowanieToolStripMenuItem_Click;
+            // 
+            // tableForProductsEmployee1
+            // 
+            tableForProductsEmployee1.Location = new Point(0, 61);
+            tableForProductsEmployee1.Name = "tableForProductsEmployee1";
+            tableForProductsEmployee1.Size = new Size(1075, 550);
+            tableForProductsEmployee1.TabIndex = 2;
+            // 
             // MainScreenEmployee
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(tableForProductsEmployee1);
             Controls.Add(menuStrip1);
             Name = "MainScreenEmployee";
             Size = new Size(1084, 611);
@@ -158,16 +171,17 @@
 
         #endregion
 
-        private ToolStripMenuItem ofertySpecjalneToolStripMenuItem;
         private ToolStripMenuItem hamburgeryToolStripMenuItem;
         private ToolStripMenuItem dodatkiToolStripMenuItem;
         private ToolStripMenuItem napojeToolStripMenuItem;
+        private ToolStripMenuItem panelToolStripMenuItem;
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem koszykToolStripMenuItem;
+        private ToolStripMenuItem wylogowanieToolStripMenuItem;
         private ToolStripMenuItem zmieńHasłoToolStripMenuItem;
         private ToolStripMenuItem dodajOfertęToolStripMenuItem;
         private ToolStripMenuItem usuńOfertęToolStripMenuItem;
         private ToolStripMenuItem dodajPracownikaToolStripMenuItem;
         private ToolStripMenuItem usuńPracownikaToolStripMenuItem;
+        private TableForProductsEmployee tableForProductsEmployee1;
     }
 }

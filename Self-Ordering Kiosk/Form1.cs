@@ -62,12 +62,12 @@ namespace Self_Ordering_Kiosk
         }
 
         //public async Task GoToThirdScreen()
-        public void GoToMainScreenEmployee()
+        public async Task GoToMainScreenEmployee()
         {
             panel1.Controls[0].Dispose();
-            //var mainScreen = new MainScreenControl();
-            //await mainScreen.LoadData();
-            panel1.Controls.Add(new MainScreenEmployee());
+            var mainScreenEmployee = new MainScreenEmployee();
+            await mainScreenEmployee.LoadData();
+            panel1.Controls.Add(mainScreenEmployee);
         }
     }
 }

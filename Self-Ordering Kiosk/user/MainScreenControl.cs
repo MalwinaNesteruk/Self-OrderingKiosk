@@ -37,9 +37,7 @@ namespace Self_Ordering_Kiosk
                     valueOfCounter += Cart.contentsOfCart[product];
                     valueOfBasket += Cart.contentsOfCart[product] * product.Price;
                     koszykToolStripMenuItem.Text = "(" + valueOfCounter.ToString() + ")      " + valueOfBasket.ToString();
-                }
-
-                
+                }                
             }
             AbilityToClickOnCart();
             tableForProductsControl1.SetOneProduct(await InfoSpecialProduct());
@@ -144,7 +142,6 @@ namespace Self_Ordering_Kiosk
             koszykToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
             tableForProductsControl1.SetLabel("Mamy szeroką ofertę napojów.");
             tableForProductsControl1.SetOneProduct(await InfoProduct("napoje"));
-
         }
 
         private void koszykToolStripMenuItem_Click(object sender, EventArgs e)
@@ -157,8 +154,6 @@ namespace Self_Ordering_Kiosk
             napojeToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
             koszykToolStripMenuItem.BackColor = Color.FromArgb(255, 128, 0);
             proposalControl1.SetOneProduct(ProposalProduct());
-            
-
         }
 
         public void UpdateCartEvent()

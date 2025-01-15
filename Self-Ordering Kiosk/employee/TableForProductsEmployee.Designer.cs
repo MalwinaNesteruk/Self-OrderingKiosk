@@ -1,6 +1,6 @@
-﻿namespace Self_Ordering_Kiosk
+﻿namespace Self_Ordering_Kiosk.employee
 {
-    partial class TableForProductsControl
+    partial class TableForProductsEmployee
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,12 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            button1 = new Button();
             panel1 = new Panel();
+            label1 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1.SuspendLayout();
             SuspendLayout();
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(tableLayoutPanel1);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1075, 550);
+            panel1.TabIndex = 1;
             // 
             // label1
             // 
@@ -43,32 +52,7 @@
             label1.Name = "label1";
             label1.Size = new Size(558, 30);
             label1.TabIndex = 1;
-            label1.Text = "Zapraszamy do zapoznania się z naszą ofertą sezonową.";
             label1.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.Black;
-            button1.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(826, 0);
-            button1.Name = "button1";
-            button1.Size = new Size(235, 30);
-            button1.TabIndex = 2;
-            button1.Text = "Powrót do strony startowej";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(tableLayoutPanel1);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1075, 550);
-            panel1.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -87,12 +71,12 @@
             tableLayoutPanel1.Size = new Size(1075, 510);
             tableLayoutPanel1.TabIndex = 0;
             // 
-            // TableForProductsControl
+            // TableForProductsEmployee
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
-            Name = "TableForProductsControl";
+            Name = "TableForProductsEmployee";
             Size = new Size(1075, 550);
             panel1.ResumeLayout(false);
             ResumeLayout(false);
@@ -100,9 +84,8 @@
 
         #endregion
 
-        private Label label1;
-        private Button button1;
         private Panel panel1;
+        private Label label1;
         private TableLayoutPanel tableLayoutPanel1;
     }
 }
