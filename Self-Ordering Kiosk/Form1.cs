@@ -1,3 +1,4 @@
+using Self_Ordering_Kiosk.db.Model;
 using Self_Ordering_Kiosk.employee;
 using Self_Ordering_Kiosk.user;
 
@@ -61,13 +62,18 @@ namespace Self_Ordering_Kiosk
             panel1.Controls.Add(new Logging());
         }
 
-        //public async Task GoToThirdScreen()
         public async Task GoToMainScreenEmployee()
         {
             panel1.Controls[0].Dispose();
             var mainScreenEmployee = new MainScreenEmployee();
             await mainScreenEmployee.LoadData();
             panel1.Controls.Add(mainScreenEmployee);
+        }
+
+        public void GoToProductModification(Product product, bool isSpecjal)
+        {
+            panel1.Controls[0].Dispose();
+            panel1.Controls.Add(new productModification(product, isSpecjal));
         }
     }
 }

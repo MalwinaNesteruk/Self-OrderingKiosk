@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,8 +20,10 @@ namespace Self_Ordering_Kiosk.employee
         public string category;
         public string productName;
         public decimal productPrice;
+        public bool isSpecial;
+        
 
-        public ProductEmployee(Product product, bool isSpecjal)
+        public ProductEmployee(Product product, bool isSpecial)
         {
             InitializeComponent();
             this.product = product;
@@ -28,18 +31,20 @@ namespace Self_Ordering_Kiosk.employee
             label2.Text = product.Description;
             label4.Text = product.Price.ToString();
             pictureBox1.ImageLocation = product.Picture;
-            checkBox1.Checked = isSpecjal;
+            checkBox1.Checked = isSpecial;
 
             productId = product.Id;
             category = product.Category.Name;
             productName = product.Name;
             productPrice = product.Price;
+            this.isSpecial = isSpecial;
             checkBox1.CheckedChanged += checkBox1_CheckedChanged;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            var form = (Form1)this.Parent.Parent.Parent.Parent.Parent.Parent;
+            form.GoToProductModification(product, isSpecial);
         }
 
         private async void button2_Click(object sender, EventArgs e)
