@@ -75,5 +75,17 @@ namespace Self_Ordering_Kiosk
             panel1.Controls[0].Dispose();
             panel1.Controls.Add(new productModification(product, isSpecjal));
         }
+
+        public void GoToProductAdding()
+        {
+            panel1.Controls[0].Dispose();
+            panel1.Controls.Add(new ProductAdding());
+        }
+
+        public void GoToAddEmplyee()
+        { 
+            panel1.Controls[0].Dispose();
+            panel1.Controls.Add(new AddEmployee());
+        }
     }
 }

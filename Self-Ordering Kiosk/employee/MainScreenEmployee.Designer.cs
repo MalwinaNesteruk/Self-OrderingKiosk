@@ -100,6 +100,7 @@
             dodajOfertęToolStripMenuItem.Name = "dodajOfertęToolStripMenuItem";
             dodajOfertęToolStripMenuItem.Size = new Size(206, 22);
             dodajOfertęToolStripMenuItem.Text = "Dodaj ofertę";
+            dodajOfertęToolStripMenuItem.Click += dodajOfertęToolStripMenuItem_Click;
             // 
             // usuńOfertęToolStripMenuItem
             // 
@@ -114,6 +115,7 @@
             dodajPracownikaToolStripMenuItem.Name = "dodajPracownikaToolStripMenuItem";
             dodajPracownikaToolStripMenuItem.Size = new Size(206, 22);
             dodajPracownikaToolStripMenuItem.Text = "Dodaj pracownika";
+            dodajPracownikaToolStripMenuItem.Click += dodajPracownikaToolStripMenuItem_Click;
             // 
             // usuńPracownikaToolStripMenuItem
             // 

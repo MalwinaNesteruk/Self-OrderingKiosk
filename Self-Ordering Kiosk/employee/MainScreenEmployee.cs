@@ -117,7 +117,18 @@ namespace Self_Ordering_Kiosk.employee
                 default:
                     break;
             }
+        }
 
+        private void dodajOfertęToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = (Form1)this.Parent.Parent;
+            form.GoToProductAdding();
+        }
+
+        private void dodajPracownikaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = (Form1)this.Parent.Parent;
+            form.GoToAddEmplyee();
         }
     }
 }
