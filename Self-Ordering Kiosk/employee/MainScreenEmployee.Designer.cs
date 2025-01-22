@@ -93,6 +93,7 @@
             zmieńHasłoToolStripMenuItem.Name = "zmieńHasłoToolStripMenuItem";
             zmieńHasłoToolStripMenuItem.Size = new Size(206, 22);
             zmieńHasłoToolStripMenuItem.Text = "Zmień hasło";
+            zmieńHasłoToolStripMenuItem.Click += zmieńHasłoToolStripMenuItem_Click;
             // 
             // dodajOfertęToolStripMenuItem
             // 
@@ -123,6 +124,7 @@
             usuńPracownikaToolStripMenuItem.Name = "usuńPracownikaToolStripMenuItem";
             usuńPracownikaToolStripMenuItem.Size = new Size(206, 22);
             usuńPracownikaToolStripMenuItem.Text = "Usuń pracownika";
+            usuńPracownikaToolStripMenuItem.Click += usuńPracownikaToolStripMenuItem_Click;
             // 
             // menuStrip1
             // 

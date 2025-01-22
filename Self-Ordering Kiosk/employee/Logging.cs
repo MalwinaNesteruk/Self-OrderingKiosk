@@ -14,7 +14,9 @@ namespace Self_Ordering_Kiosk
 {
     public partial class Logging : UserControl
     {
-        bool flag = true;
+        bool passwordIsInvisibleButton3 = true;
+        public static string login;
+        public static bool isAdmin;
         public Logging()
         {
             InitializeComponent();
@@ -35,13 +37,13 @@ namespace Self_Ordering_Kiosk
             }
             else
             {
-                string inputLogin = textBox1.Text.Trim();
+                login = textBox1.Text.Trim();
                 string inputPassword = textBox2.Text.Trim();
 
                 using (KioskContext db = new KioskContext())
                 {
                     string hashedPassword = HashPassword(inputPassword);
-                    var employee = db.Employees.SingleOrDefault(x => x.Login == inputLogin && x.Password == hashedPassword);
+                    var employee = db.Employees.SingleOrDefault(x => x.Login == login && x.Password == hashedPassword);
                     if (employee == null)
                     {
                         textBox1.Text = string.Empty;
@@ -51,6 +53,7 @@ namespace Self_Ordering_Kiosk
                     }
                     else
                     {
+                        isAdmin = employee.IsAdmin;
                         var form = (Form1)this.Parent.Parent;
                         form.GoToMainScreenEmployee();
                     }
@@ -80,18 +83,18 @@ namespace Self_Ordering_Kiosk
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (flag == false)
+            if (passwordIsInvisibleButton3 == false)
             {
                 textBox2.PasswordChar = '*';
                 button3.BackgroundImage = Image.FromFile("C:\\Users\\Malwina\\source\\repos\\Self-Ordering Kiosk\\oko2.png");
-                flag = true;
+                passwordIsInvisibleButton3 = true;
             }
 
             else
             {
                 textBox2.PasswordChar = '\0';
                 button3.BackgroundImage = Image.FromFile("C:\\Users\\Malwina\\source\\repos\\Self-Ordering Kiosk\\oko.png");
-                flag = false;
+                passwordIsInvisibleButton3 = false;
             }
             button3.BackgroundImageLayout = ImageLayout.Zoom;
         }

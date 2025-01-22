@@ -22,6 +22,11 @@ namespace Self_Ordering_Kiosk.employee
         public MainScreenEmployee()
         {
             InitializeComponent();
+            if (Logging.isAdmin == false)
+            {
+                dodajPracownikaToolStripMenuItem.Visible = false;
+                usuńPracownikaToolStripMenuItem.Visible = false;
+            }
         }
 
         public async Task LoadData()
@@ -129,6 +134,18 @@ namespace Self_Ordering_Kiosk.employee
         {
             var form = (Form1)this.Parent.Parent;
             form.GoToAddEmplyee();
+        }
+
+        private void zmieńHasłoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = (Form1)this.Parent.Parent;
+            form.GoToChangePassword();
+        }
+
+        private void usuńPracownikaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = (Form1)this.Parent.Parent;
+            form.GoToDeleteEmplyee();
         }
     }
 }

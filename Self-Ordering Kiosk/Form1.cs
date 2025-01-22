@@ -87,5 +87,17 @@ namespace Self_Ordering_Kiosk
             panel1.Controls[0].Dispose();
             panel1.Controls.Add(new AddEmployee());
         }
+
+        public void GoToChangePassword()
+        {
+            panel1.Controls[0].Dispose();
+            panel1.Controls.Add(new ChangePassword());
+        }
+
+        public void GoToDeleteEmplyee()
+        {
+            panel1.Controls[0].Dispose();
+            panel1.Controls.Add(new DeleteEmployee());
+        }
     }
 }

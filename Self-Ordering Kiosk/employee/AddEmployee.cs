@@ -72,8 +72,6 @@ namespace Self_Ordering_Kiosk.employee
 
                 while (db.Employees.SingleOrDefault(x => x.Login == login) != null)
                 {
-                    int lengthOfLogin = login.Length;
-
                     if (Char.IsDigit(login[^1]))
                     {
                         int lastChar = int.Parse(login[^1].ToString()) + 1;
@@ -120,9 +118,6 @@ namespace Self_Ordering_Kiosk.employee
 
         private string GeneratePassword()
         {
-            //to się przyda do zmiany hasła
-            //string password = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#\$%\^&\*\(\)])[A-Za-z\d@#\$%\^&\*\(\)]{8,}$";
-
             const string lowerCase = "abcdefghijklmnopqrstuvwxyz";
             const string upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             const string digits = "0123456789";
