@@ -109,6 +109,7 @@
             usuńOfertęToolStripMenuItem.Name = "usuńOfertęToolStripMenuItem";
             usuńOfertęToolStripMenuItem.Size = new Size(206, 22);
             usuńOfertęToolStripMenuItem.Text = "Usuń ofertę";
+            usuńOfertęToolStripMenuItem.Click += usuńOfertęToolStripMenuItem_Click;
             // 
             // dodajPracownikaToolStripMenuItem
             // 

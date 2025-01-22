@@ -147,5 +147,11 @@ namespace Self_Ordering_Kiosk.employee
             var form = (Form1)this.Parent.Parent;
             form.GoToDeleteEmplyee();
         }
+
+        private void usuńOfertęToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = (Form1)this.Parent.Parent;
+            form.GoToDeleteProducts();
+        }
     }
 }

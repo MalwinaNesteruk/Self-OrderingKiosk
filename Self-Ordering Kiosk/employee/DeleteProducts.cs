@@ -1,7 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Self_Ordering_Kiosk.db.ModelEmployee;
 using Self_Ordering_Kiosk.db;
-using Self_Ordering_Kiosk.db.Model;
-using Self_Ordering_Kiosk.db.ModelEmployee;
+using System.Windows.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,15 +10,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Self_Ordering_Kiosk.db.Model;
 
 namespace Self_Ordering_Kiosk.employee
 {
-    public partial class DeleteEmployee : UserControl
+    public partial class DeleteProducts : UserControl
     {
-        List<int> employeeIds = new List<int>();
-        List<Employee> employees = new List<Employee>();
+        List<int> productIds = new List<int>();
+        List<Product> products = new List<Product>();
+        List<Category> categories = new List<Category>();
         CheckBox checkBox = new CheckBox();
-        public DeleteEmployee()
+        public DeleteProducts()
         {
             InitializeComponent();
             LoadDataIntoTable();
@@ -31,32 +32,32 @@ namespace Self_Ordering_Kiosk.employee
             tableLayoutPanel1.RowCount++;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50));
 
-            Label labelName = new Label { Text = "Imię", Font = new Font("Arial", 16), AutoSize = true };
-            Label labelSurname = new Label { Text = "Nazwisko", Font = new Font("Arial", 16), AutoSize = true };
-            Label labelLogin = new Label { Text = "Login", Font = new Font("Arial", 16), AutoSize = true };
+            Label labelName = new Label { Text = "Nazwa", Font = new Font("Arial", 16), AutoSize = true };
+            Label labelPrice = new Label { Text = "Cena", Font = new Font("Arial", 16), AutoSize = true };
+            Label labelCategory = new Label { Text = "Kategoria", Font = new Font("Arial", 16), AutoSize = true };
 
             tableLayoutPanel1.Controls.Add(labelName, 0, tableLayoutPanel1.RowCount - 1);
-            tableLayoutPanel1.Controls.Add(labelSurname, 1, tableLayoutPanel1.RowCount - 1);
-            tableLayoutPanel1.Controls.Add(labelLogin, 2, tableLayoutPanel1.RowCount - 1);
+            tableLayoutPanel1.Controls.Add(labelPrice, 1, tableLayoutPanel1.RowCount - 1);
+            tableLayoutPanel1.Controls.Add(labelCategory, 2, tableLayoutPanel1.RowCount - 1);
 
             using (KioskContext db = new KioskContext())
             {
-                employees = db.Employees.ToList();
-                employees.Remove(employees.Where(x => x.Login == Logging.login).FirstOrDefault());
-                foreach (var employee in employees)
+                products = db.Products.OrderBy(x => x.Category.Id).ToList();
+                categories = db.Categories.ToList();
+                foreach (var product in products)
                 {
                     tableLayoutPanel1.RowCount++;
                     tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50));
 
-                    labelName = new Label { Text = employee.Name, Font = new Font("Arial", 16), AutoSize = true };
-                    labelSurname = new Label { Text = employee.Surname, Font = new Font("Arial", 16), AutoSize = true };
-                    labelLogin = new Label { Text = employee.Login, Font = new Font("Arial", 16), AutoSize = true };
+                    labelName = new Label { Text = product.Name, Font = new Font("Arial", 16), AutoSize = true };
+                    labelPrice = new Label { Text = product.Price.ToString(), Font = new Font("Arial", 16), AutoSize = true };
+                    labelCategory = new Label { Text = categories.Where(x => x.Id == product.Category.Id).Select(x => x.Name).FirstOrDefault(), Font = new Font("Arial", 16), AutoSize = true };
                     checkBox = new CheckBox();
                     checkBox.CheckAlign = ContentAlignment.MiddleCenter;
 
                     tableLayoutPanel1.Controls.Add(labelName, 0, tableLayoutPanel1.RowCount - 1);
-                    tableLayoutPanel1.Controls.Add(labelSurname, 1, tableLayoutPanel1.RowCount - 1);
-                    tableLayoutPanel1.Controls.Add(labelLogin, 2, tableLayoutPanel1.RowCount - 1);
+                    tableLayoutPanel1.Controls.Add(labelPrice, 1, tableLayoutPanel1.RowCount - 1);
+                    tableLayoutPanel1.Controls.Add(labelCategory, 2, tableLayoutPanel1.RowCount - 1);
                     tableLayoutPanel1.Controls.Add(checkBox, 3, tableLayoutPanel1.RowCount - 1);
                 }
             }
@@ -84,14 +85,14 @@ namespace Self_Ordering_Kiosk.employee
             int column = 3;
             int row = 1;
 
-            foreach (var employee in employees)
+            foreach (var product in products)
             {
                 Control control = tableLayoutPanel1.GetControlFromPosition(column, row);
                 if (control is CheckBox checkBox)
                 {
                     if (checkBox.Checked)
                     {
-                        employeeIds.Add(employee.Id);
+                        productIds.Add(product.Id);
                     }
                 }
                 row++;
@@ -99,14 +100,20 @@ namespace Self_Ordering_Kiosk.employee
 
             using (KioskContext db = new KioskContext())
             {
-                var confirmResult = MessageBox.Show("Czy na pewno chcesz usunąć wybranych pracowników?",
+                var confirmResult = MessageBox.Show("Czy na pewno chcesz usunąć wybrane produkty?",
                                     "Potwierdzenie",
                                     MessageBoxButtons.YesNo);
                 switch (confirmResult)
                 {
                     case DialogResult.Yes:
-                        var employeeToRemove = db.Employees.Where(x => employeeIds.Contains(x.Id)).ToList();
-                        db.Employees.RemoveRange(employeeToRemove);
+
+                        var specialProductToRemove = db.SpecialOffers.Where(x => productIds.Contains(x.Product.Id)).ToList();
+                        if (specialProductToRemove != null)
+                        {
+                            db.SpecialOffers.RemoveRange(specialProductToRemove);
+                        }
+                        var productsToRemove = db.Products.Where(x => productIds.Contains(x.Id)).ToList();
+                        db.Products.RemoveRange(productsToRemove);
                         db.SaveChanges();
                         var form = (Form1)this.Parent.Parent;
                         form.GoToMainScreenEmployee();

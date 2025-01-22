@@ -99,5 +99,11 @@ namespace Self_Ordering_Kiosk
             panel1.Controls[0].Dispose();
             panel1.Controls.Add(new DeleteEmployee());
         }
+
+        public void GoToDeleteProducts()
+        {
+            panel1.Controls[0].Dispose();
+            panel1.Controls.Add(new DeleteProducts());
+        }
     }
 }
